@@ -17,7 +17,7 @@ const RegistrationForm = ({ onRegister }) => {
 
     try {
       const response = await axios.post(
-        "http://localhost:3000/api/users/register",
+        "https://login-application-backend.onrender.com/api/users/register",
         {
           name: name,
           email: email,
