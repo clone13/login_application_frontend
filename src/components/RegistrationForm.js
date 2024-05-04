@@ -24,7 +24,8 @@ const RegistrationForm = ({ onRegister }) => {
           password: password,
         }
       );
-      window.location.href = "/usermanagement";
+      window.location.href =
+        "https://login-application-backend.onrender.com/api/users/usermanagement";
       localStorage.setItem("userEmail", email);
       console.log(response.data);
     } catch (error) {

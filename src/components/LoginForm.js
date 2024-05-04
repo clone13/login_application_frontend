@@ -29,7 +29,8 @@ const LoginForm = ({ onLogin }) => {
 
       const { token } = response.data;
       localStorage.setItem("token", token);
-      window.location.href = "/usermanagement";
+      window.location.href =
+        "https://login-application-backend.onrender.com/api/users/usermanagement";
     } catch (error) {
       if (error.response && error.response.data) {
         setBackendError(error.response.data.message);
