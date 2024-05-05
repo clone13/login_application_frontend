@@ -40,7 +40,7 @@ const RegistrationForm = ({ onRegister }) => {
       handleHistory();
     } catch (error) {
       // Handle error
-      console.error("Registration failed:", error.response.data.message);
+      setErrorMessage(error.response.data.message);
       // You can display an error message to the user
     }
   };
