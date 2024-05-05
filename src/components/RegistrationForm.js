@@ -76,7 +76,9 @@ const RegistrationForm = ({ onRegister }) => {
         <div className="linkForm">
           {errorMessage && <p className="text-danger">{errorMessage}</p>}
           <p>If you have an account</p>
-          <button onClick={handleClickRoute}>LOG IN</button>
+          <button className="btn btn-link" onClick={handleClickRoute}>
+            LOG IN
+          </button>
         </div>
       </form>
     </div>

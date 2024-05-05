@@ -90,7 +90,9 @@ const LoginForm = ({ onLogin }) => {
         {backendError && <p className="text-danger">{backendError}</p>}
         <div>
           <p>Not a member?</p>
-          <button onClick={handleClickRoute}>REGISTRATION</button>
+          <button className="btn btn-link" onClick={handleClickRoute}>
+            REGISTRATION
+          </button>
         </div>
       </div>
     </>
