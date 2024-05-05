@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import axios from "axios";
 import Toolbar from "./Toolbar";
 
@@ -7,6 +8,8 @@ const UserManagement = () => {
   const [users, setUsers] = useState([]);
   const [selectedUsers, setSelectedUsers] = useState([]);
   const [sortOrder, setSortOrder] = useState("asc");
+
+  const history = useHistory();
 
   useEffect(() => {
     const fetchUsers = async () => {
@@ -21,7 +24,6 @@ const UserManagement = () => {
     };
 
     fetchUsers(); // Fetch users when the component mounts
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -151,6 +153,7 @@ const UserManagement = () => {
   };
 
   const logOutHandler = () => {
+    history.push("/");
     setWhoIsUser("");
     localStorage.removeItem("userEmail");
     localStorage.removeItem("token");
@@ -171,9 +174,9 @@ const UserManagement = () => {
           <div className="me-2">
             Hello, <b>{whoIsUser}</b> !
           </div>
-          <a href="/login" onClick={logOutHandler}>
+          <button className="btn btn-link" onClick={logOutHandler}>
             Logout
-          </a>
+          </button>
         </div>
       </div>
       <div className="container">
