@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { useHistory } from "react-router-dom";
 import axios from "axios";
 import Toolbar from "./Toolbar";
 
@@ -8,8 +7,6 @@ const UserManagement = () => {
   const [users, setUsers] = useState([]);
   const [selectedUsers, setSelectedUsers] = useState([]);
   const [sortOrder, setSortOrder] = useState("asc");
-
-  const history = useHistory();
 
   useEffect(() => {
     const fetchUsers = async () => {
@@ -154,7 +151,6 @@ const UserManagement = () => {
   };
 
   const logOutHandler = () => {
-    history.push("");
     setWhoIsUser("");
     localStorage.removeItem("userEmail");
     localStorage.removeItem("token");
