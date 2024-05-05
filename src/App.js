@@ -19,7 +19,6 @@ const App = () => {
         <Route path="/login" component={LoginForm} />
         <Route path="/registration" component={RegistrationForm} />
         <PrivateRoute path="/usermanagement" component={UserManagement} />{" "}
-        <Redirect from="/" to="/login" />
       </Switch>
     </Router>
   );
