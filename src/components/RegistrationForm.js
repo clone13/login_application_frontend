@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 import axios from "axios";
 
 const RegistrationForm = ({ onRegister }) => {
@@ -6,6 +7,16 @@ const RegistrationForm = ({ onRegister }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
+
+  const history = useHistory();
+
+  const handleClickRoute = () => {
+    history.push("/login");
+  };
+
+  const handleHistory = () => {
+    history.push("/usermanagement");
+  };
 
   const handleRegister = async (e) => {
     e.preventDefault();
@@ -24,10 +35,9 @@ const RegistrationForm = ({ onRegister }) => {
           password: password,
         }
       );
-      window.location.href =
-        "https://login-application-backend.onrender.com/api/users/usermanagement";
       localStorage.setItem("userEmail", email);
       console.log(response.data);
+      handleHistory();
     } catch (error) {
       // Handle error
       console.error("Registration failed:", error.response.data.message);
@@ -66,7 +76,7 @@ const RegistrationForm = ({ onRegister }) => {
         <div className="linkForm">
           {errorMessage && <p className="text-danger">{errorMessage}</p>}
           <p>If you have an account</p>
-          <a href="/login">LOG IN</a>
+          <button onClick={handleClickRoute}>LOG IN</button>
         </div>
       </form>
     </div>

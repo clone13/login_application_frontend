@@ -16,13 +16,9 @@ const App = () => {
     <Router>
       <Switch>
         <Route exact path="/" component={LoginForm} />
-        <Route exact path="/login" component={LoginForm} />
-        <Route exact path="/registration" component={RegistrationForm} />
-        <PrivateRoute
-          exact
-          path="/usermanagement"
-          component={UserManagement}
-        />{" "}
+        <Route path="/login" component={LoginForm} />
+        <Route path="/registration" component={RegistrationForm} />
+        <PrivateRoute path="/usermanagement" component={UserManagement} />{" "}
         <Redirect from="/" to="/login" />
       </Switch>
     </Router>

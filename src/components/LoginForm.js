@@ -1,10 +1,22 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 import axios from "axios";
+// import RegistrationForm from "./RegistrationForm";
 
 const LoginForm = ({ onLogin }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [backendError, setBackendError] = useState("");
+
+  const history = useHistory();
+
+  const handleClickRoute = () => {
+    history.push("/registration");
+  };
+
+  const handleHistory = () => {
+    history.push("/usermanagement");
+  };
 
   const getEmail = () => {
     localStorage.setItem("userEmail", email);
@@ -20,7 +32,7 @@ const LoginForm = ({ onLogin }) => {
 
     try {
       const response = await axios.post(
-        "https://login-application-backend.onrender.com/api/users/login",
+        "https://login-application-backend.onrender.com/api/users/login/",
         {
           email,
           password,
@@ -29,8 +41,8 @@ const LoginForm = ({ onLogin }) => {
 
       const { token } = response.data;
       localStorage.setItem("token", token);
-      window.location.href =
-        "https://login-application-backend.onrender.com/api/users/usermanagement";
+      // window.location.href = "/usermanagement";
+      handleHistory();
     } catch (error) {
       if (error.response && error.response.data) {
         setBackendError(error.response.data.message);
@@ -78,7 +90,7 @@ const LoginForm = ({ onLogin }) => {
         {backendError && <p className="text-danger">{backendError}</p>}
         <div>
           <p>Not a member?</p>
-          <a href="/registration">REGISTRATION</a>
+          <button onClick={handleClickRoute}>REGISTRATION</button>
         </div>
       </div>
     </>
