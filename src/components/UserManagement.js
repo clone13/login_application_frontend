@@ -154,7 +154,7 @@ const UserManagement = () => {
   };
 
   const logOutHandler = () => {
-    history.push("/login");
+    history.push("/");
     setWhoIsUser("");
     localStorage.removeItem("userEmail");
     localStorage.removeItem("token");
